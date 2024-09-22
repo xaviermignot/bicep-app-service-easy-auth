@@ -19,4 +19,5 @@ resource app 'Microsoft.Web/sites@2023-12-01' = {
 }
 
 output id string = app.id
+output name string = app.name
 output defaultHostName string = app.properties.defaultHostName
