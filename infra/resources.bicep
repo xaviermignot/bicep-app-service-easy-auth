@@ -19,3 +19,11 @@ module appService 'modules/appService.bicep' = {
     uniqueSuffix: uniqueSuffix
   }
 }
+
+module appRegistration 'modules/appRegistration.bicep' = {
+  name: 'deploy-appRegistration'
+  params: {
+    defaultHostName: appService.outputs.defaultHostName
+    project: project
+  }
+}
