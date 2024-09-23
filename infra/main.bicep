@@ -1,6 +1,7 @@
 targetScope = 'subscription'
 
 param location string
+param generateAppRegistrationPassword bool
 
 var project = 'app-service-easy-auth'
 
@@ -16,5 +17,6 @@ module resources 'resources.bicep' = {
   params: {
     project: project
     uniqueSuffix: uniqueString(subscription().id, location, project)
+    generateAppRegistrationPassword: generateAppRegistrationPassword
   }
 }

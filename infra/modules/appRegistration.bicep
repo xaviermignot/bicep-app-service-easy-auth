@@ -3,6 +3,8 @@ extension microsoftGraph
 param project string
 param defaultHostName string
 
+param generatePassword bool
+
 resource app 'Microsoft.Graph/applications@v1.0' = {
   displayName: 'app-${project}'
   uniqueName: 'app-${project}'
@@ -34,5 +36,5 @@ resource app 'Microsoft.Graph/applications@v1.0' = {
     }
   ]
 
-  passwordCredentials: [{}]
+  passwordCredentials: generatePassword ? [{}] : []
 }

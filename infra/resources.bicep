@@ -1,6 +1,7 @@
 param location string = resourceGroup().location
 param project string
 param uniqueSuffix string
+param generateAppRegistrationPassword bool
 
 module appServicePlan 'modules/appServicePlan.bicep' = {
   name: 'deploy-appServicePlan'
@@ -25,5 +26,6 @@ module appRegistration 'modules/appRegistration.bicep' = {
   params: {
     defaultHostName: appService.outputs.defaultHostName
     project: project
+    generatePassword: generateAppRegistrationPassword
   }
 }
