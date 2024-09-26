@@ -29,3 +29,11 @@ module appRegistration 'modules/appRegistration.bicep' = {
     generatePassword: generateAppRegistrationPassword
   }
 }
+
+module easyAuth 'modules/easyAuth.bicep' = {
+  name: 'deploy-easyAuth'
+  params: {
+    appServiceName: appService.outputs.name
+    clientId: appRegistration.outputs.clientId
+  }
+}
