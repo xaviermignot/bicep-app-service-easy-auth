@@ -20,6 +20,7 @@ resource easyAuth 'Microsoft.Web/sites/config@2023-12-01' = {
         registration: {
           clientId: clientId
           openIdIssuer: uri(environment().authentication.loginEndpoint, tenant().tenantId)
+          clientSecretSettingName: 'MICROSOFT_PROVIDER_AUTHENTICATION_SECRET'
         }
         validation: {
           defaultAuthorizationPolicy: {

@@ -33,6 +33,9 @@ resource app 'Microsoft.Graph/applications@v1.0' = {
       ]
     }
   ]
+
+  passwordCredentials: [{}]
 }
 
 output clientId string = app.appId
+output clientSecret string = app.passwordCredentials[0].secretText
