@@ -5,7 +5,7 @@ resource plan 'Microsoft.Web/serverfarms@2023-12-01' = {
   name: 'asp-${project}'
   location: location
 
-  kind: 'app,linux'
+  kind: 'linux'
 
   properties: {
     reserved: true
