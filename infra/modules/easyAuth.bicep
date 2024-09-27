@@ -11,6 +11,8 @@ resource easyAuth 'Microsoft.Web/sites/config@2023-12-01' = {
   properties: {
     globalValidation: {
       requireAuthentication: true
+      redirectToProvider: 'azureActiveDirectory'
+      unauthenticatedClientAction: 'RedirectToLoginPage'
     }
     identityProviders: {
       azureActiveDirectory: {
@@ -18,6 +20,13 @@ resource easyAuth 'Microsoft.Web/sites/config@2023-12-01' = {
         registration: {
           clientId: clientId
           openIdIssuer: uri(environment().authentication.loginEndpoint, tenant().tenantId)
+        }
+        validation: {
+          defaultAuthorizationPolicy: {
+            allowedApplications: [
+              clientId
+            ]
+          }
         }
       }
     }
