@@ -9,5 +9,8 @@ if [ "$app_id" ]; then
 fi
 
 rg_name="rg-app-service-easy-auth"
+kv_name=$(az keyvault list -g "$rg_name" --query '[].name' -o tsv)
 echo "Deleting resource group $rg_name..."
 az group delete -n "$rg_name" -y
+echo "Purging key vault $kv_name..."
+az keyvault purge -n "$kv_name"
