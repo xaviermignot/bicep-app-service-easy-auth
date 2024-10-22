@@ -20,3 +20,5 @@ module resources 'resources.bicep' = {
     generateAppRegistrationPassword: generateAppRegistrationPassword
   }
 }
+
+output appServiceDefaultHostName string = resources.outputs.appServiceDefaultHostName

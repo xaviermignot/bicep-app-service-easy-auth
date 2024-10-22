@@ -73,3 +73,5 @@ module easyAuth 'modules/easyAuth.bicep' = {
       : appRegistration.outputs.clientId
   }
 }
+
+output appServiceDefaultHostName string = appService.outputs.defaultHostName
