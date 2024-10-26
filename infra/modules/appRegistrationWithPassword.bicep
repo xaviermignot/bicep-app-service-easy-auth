@@ -38,4 +38,8 @@ resource app 'Microsoft.Graph/applications@v1.0' = {
 }
 
 output clientId string = app.appId
+// As outputs cannot be secured in Bicep, the client secret will appear in clear text in the Azure portal.
+// This is ok for a sample like this but ideally other options should be used:
+//    - Put the secret in a Key Vault secret from this module (instead of another module)
+//    - Use Workload Identity Federation once it's available for this scenario
 output clientSecret string = app.passwordCredentials[0].secretText

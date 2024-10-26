@@ -39,6 +39,8 @@ module rbac 'modules/rbac.bicep' = {
   }
 }
 
+// The App Registration's password should be generated once, so a different module is used whether the 
+// App Registration already exists or not
 module appRegistrationWithPassword 'modules/appRegistrationWithPassword.bicep' = if (generateAppRegistrationPassword) {
   name: 'deploy-appRegistrationWithPassword'
   params: {

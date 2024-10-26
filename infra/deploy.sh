@@ -11,6 +11,7 @@ if [ -z "$location" ]; then
   location="francecentral"
 fi
 
+# If the App Registration already exists, its client secret should not be generated again
 app_id=$(az ad app list --filter "uniqueName eq 'app-app-service-easy-auth'" --query '[].id' -o tsv)
 generate_app_password="$([ "$app_id" ] && echo 'false' || echo 'true')"
 
